@@ -21,7 +21,10 @@ public class AppConstants {
 	public static final List<String> EXPECTED_ACC_PAGE_HEADERS_LIST = List.of("My Account", "My Orders", "My Affiliate Account", "Newsletter");
 	
 	public static final String USER_REGISTER_SUCCESS_MESSG = "Your Account Has Been Created!";
-
+	
+	//************sheet names**********//
+		public static final String REG_SHEET_NAME = "register";
+		public static final String SEARCH_SHEET_NAME = "search";
 
 
 

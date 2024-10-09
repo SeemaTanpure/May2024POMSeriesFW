@@ -22,7 +22,6 @@ public class AccountsPage {
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
 		eleUtil = new ElementUtil(driver);
-//		int i=10;
 	}
 	
 	public String getAccountsPageTitle() {
@@ -57,9 +56,9 @@ public class AccountsPage {
 		eleUtil.doClick(searchIcon);
 		return new ResultsPage(driver);
 	}
+	
 
 }
-
 
 
 
