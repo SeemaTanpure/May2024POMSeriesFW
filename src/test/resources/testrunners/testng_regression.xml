@@ -8,10 +8,10 @@
 	<listeners>
 		<listener
 			class-name="com.qa.opencart.listeners.ExtentReportListener" />
-		<listener
+		<!--<listener
 			class-name="com.qa.opencart.listeners.TestAllureListener" />
 		<listener
-			class-name="com.qa.opencart.listeners.AnnotationTransformer" /> 
+			class-name="com.qa.opencart.listeners.AnnotationTransformer" />  -->
 	</listeners>
 
 
@@ -24,16 +24,16 @@
 		</classes>
 	</test>
 
-	<!--test name="Accounts Page Test">
-		<parameter name="browser" value="firefox" />
+	<!--<test name="Accounts Page Test">
+		<parameter name="browser" value="chrome" />
 
 		<classes>
 			<class name="com.qa.opencart.tests.AccountsPageTest" />
 		</classes>
-	</test> -->
+	</test>
 
 
-	<!-- <test name="ProductInfo Page Test">
+	<test name="ProductInfo Page Test">
 		<parameter name="browser" value="edge" />
 
 		<classes>
@@ -46,7 +46,7 @@
 		<classes>
 			<class name="com.qa.opencart.tests.RegisterPageTest" />
 		</classes>
-	</test> -->
+	</test>  -->
 
 
 
