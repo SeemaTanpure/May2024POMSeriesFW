@@ -9,8 +9,12 @@
     <classes>
       <class name="com.qa.opencart.tests.LoginPageTest">
         <methods>
+          <include name="forgotPwdLinkExistTest"/>
+          <include name="loginTest"/>
           <include name="loginPageTitleTest"/>
           <include name="setup"/>
+          <include name="loginPageURLTest"/>
+          <include name="logoExistTest"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.qa.opencart.tests.LoginPageTest -->

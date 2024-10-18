@@ -1,4 +1,5 @@
 package com.qa.opencart.utils;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +21,23 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.opencart.exceptions.FrameworkException;
+import com.qa.opencart.factory.DriverFactory;
+
+import io.qameta.allure.Step;
 
 public class ElementUtil {
 
 	private WebDriver driver;
 	private Actions act;
+	private JavaScriptUtil jsUtil;
 
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
 		act = new Actions(driver);
+		jsUtil = new JavaScriptUtil(driver);
 	}
 
+	@Step("clicking on element using locator: {0}")
 	public void doClick(By locator) {
 		getElement(locator).click();
 	}
@@ -39,6 +46,7 @@ public class ElementUtil {
 		waitForElementVisible(locator, timeOut).click();
 	}
 
+	@Step("entering value : {1} into locator: {0}")
 	public void doSendKeys(By locator, String value) {
 		getElement(locator).sendKeys(value);
 	}
@@ -55,9 +63,18 @@ public class ElementUtil {
 	public void doSendKeys(By locator, CharSequence... value) {
 		getElement(locator).sendKeys(value);
 	}
-
+	
+	
+	private void checkElementHighlight(WebElement element) {
+		if(Boolean.parseBoolean(DriverFactory.isHighlight)) {
+			jsUtil.flash(element);
+		}
+	}
+	
 	public WebElement getElement(By locator) {
-		return driver.findElement(locator);
+		WebElement element = driver.findElement(locator);
+		checkElementHighlight(element);
+		return element;
 	}
 
 	public boolean isElementDisplayed(By locator) {
@@ -305,7 +322,9 @@ public class ElementUtil {
 	 */
 	public WebElement waitForElementPresence(By locator, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		WebElement element =  wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		checkElementHighlight(element);
+		return element;
 	}
 
 	/**
@@ -318,14 +337,19 @@ public class ElementUtil {
 	 * @param timeOut
 	 * @return
 	 */
+	@Step("waiting for webelement using locator: {0} within timeout : {1}")
 	public WebElement waitForElementVisible(By locator, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		checkElementHighlight(element);
+		return element;
 	}
 
 	public WebElement waitForElementVisible(By locator, int timeOut, int intervalTime) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut), Duration.ofSeconds(intervalTime));
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		checkElementHighlight(element);
+		return element;
 	}
 	
 	/**
