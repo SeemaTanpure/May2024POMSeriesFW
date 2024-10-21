@@ -6,19 +6,6 @@
     <listener class-name="com.qa.opencart.listeners.TestAllureListener"/>
     <listener class-name="com.qa.opencart.listeners.AnnotationTransformer"/>
   </listeners>
-  <test thread-count="5" parallel="tests" name="Register Page Test(failed)" verbose="4">
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="com.qa.opencart.tests.RegisterPageTest">
-        <methods>
-          <include name="setup"/>
-          <include name="regSetup"/>
-          <include name="userRegisterTest" invocation-numbers="1 2"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.qa.opencart.tests.RegisterPageTest -->
-    </classes>
-  </test> <!-- Register Page Test(failed) -->
   <test thread-count="5" parallel="tests" name="ProductInfo Page Test(failed)" verbose="4">
     <parameter name="browser" value="edge"/>
     <classes>
@@ -32,4 +19,17 @@
       </class> <!-- com.qa.opencart.tests.ProductInfoPageTest -->
     </classes>
   </test> <!-- ProductInfo Page Test(failed) -->
+  <test thread-count="5" parallel="tests" name="Register Page Test(failed)" verbose="4">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.qa.opencart.tests.RegisterPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="regSetup"/>
+          <include name="userRegisterTest" invocation-numbers="1 2"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.qa.opencart.tests.RegisterPageTest -->
+    </classes>
+  </test> <!-- Register Page Test(failed) -->
 </suite> <!-- Failed suite [Opencart App Test Regression Suite] -->
